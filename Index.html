@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#f5f0eb">
+<title>GutFix — 7-Day Gut Reset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#49B6E5;--primary-dk:#2d8ab8;--primary-lt:#dff0f9;
+  --secondary:#263D5B;--secondary-lt:#e4ecf4;
+  --success:#16A34A;--success-lt:#f0fdf4;
+  --warning:#D97706;--warning-lt:#fffbeb;
+  --danger:#DC2626;--danger-lt:#fef2f2;
+  --surface:#FFFFFF;--surface2:#f8f5f1;--surface3:#efe9e1;
+  --bg:#f5f0eb;--bg2:#ebe4db;
+  --text:#1a1a2e;--text2:#555568;--text3:#9999ad;
+  --border:#ddd6cc;
+  --safe-bg:#f0fdf4;--safe-clr:#15803d;--safe-bdr:#bbf7d0;
+  --mod-bg:#fffbeb;--mod-clr:#a16207;--mod-bdr:#fde68a;
+  --risky-bg:#fef2f2;--risky-clr:#b91c1c;--risky-bdr:#fecaca;
+  --card-shadow:2px 4px 0 #d0c9bf,5px 7px 16px rgba(0,0,0,.06);
+  --btn-shadow:1px 2px 0 #c8c1b6,3px 4px 10px rgba(0,0,0,.06);
+  --radius:16px;--radius-sm:12px;--radius-xs:8px;
+  --font:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --hdr-h:68px;
+  --safe-green:#22c55e;--warn-yellow:#eab308;--danger-red:#ef4444;
+  --streak-gold:#f59e0b;
+}
+body.dark{
+  --primary:#62c8ef;--primary-dk:#49B6E5;--primary-lt:#163040;
+  --secondary-lt:#1e2d3e;
+  --success-lt:#0a2618;--warning-lt:#2a1f0a;--danger-lt:#2a0f0f;
+  --surface:#232136;--surface2:#2a2740;--surface3:#332f48;
+  --bg:#1a1830;--bg2:#14122a;
+  --text:#eae8f0;--text2:#a8a5b8;--text3:#6a6880;
+  --border:#3a3750;
+  --safe-bg:#0a2618;--safe-clr:#86efac;--safe-bdr:#1a4a2a;
+  --mod-bg:#2a1f0a;--mod-clr:#fde68a;--mod-bdr:#4a3a1a;
+  --risky-bg:#2a0f0f;--risky-clr:#fca5a5;--risky-bdr:#4a1a1a;
+  --card-shadow:2px 4px 0 #16142a,5px 7px 16px rgba(0,0,0,.3);
+  --btn-shadow:1px 2px 0 #12102a,3px 4px 10px rgba(0,0,0,.25);
+  --safe-green:#22c55e;--warn-yellow:#eab308;--danger-red:#ef4444;
+  --streak-gold:#f59e0b;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}
+body{
+  font-family:var(--font);background:var(--bg);color:var(--text);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  padding-top:var(--hdr-h);min-height:100vh;min-height:100dvh;
+}
+button,input,select,textarea{font-family:inherit;border:none;outline:none;background:none}
+ul{list-style:none}
+a{text-decoration:none;color:inherit}
+
+/* HEADER */
+.header{
+  position:fixed;top:0;left:0;right:0;height:var(--hdr-h);z-index:100;
+  background:var(--surface);border-bottom:2px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;box-shadow:0 2px 12px rgba(0,0,0,.04);
+}
+.header-left{display:flex;align-items:center;gap:10px}
+.logo{display:flex;align-items:center;gap:6px}
+.logo-icon{font-size:1.6rem}
+.logo-text{font-size:1.25rem;font-weight:800;color:var(--primary);letter-spacing:-.3px}
+.day-badge{
+  font-size:.7rem;font-weight:700;color:var(--secondary);
+  background:var(--secondary-lt);padding:4px 12px;border-radius:20px;
+  letter-spacing:.3px;
+}
+.header-right{display:flex;align-items:center;gap:10px}
+.score-pill{
+  display:flex;align-items:baseline;gap:4px;
+  padding:6px 12px;border-radius:20px;background:var(--surface2);
+  border:1.5px solid var(--border);
+}
+.score-num{font-size:1.15rem;font-weight:800;line-height:1}
+.score-max{font-size:.6rem;color:var(--text3);font-weight:600}
+.trend-arrow{font-size:.9rem;margin-left:1px}
+.hdr-btn{
+  width:40px;height:40px;border-radius:var(--radius-xs);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--surface2);cursor:pointer;font-size:1.1rem;
+  transition:transform .15s;box-shadow:var(--btn-shadow);
+}
+.hdr-btn:active{transform:scale(.9)}
+
+/* APP */
+.app{max-width:560px;margin:0 auto;padding:14px 16px 130px}
+
+/* CARDS */
+.card{
+  background:var(--surface);border-radius:var(--radius);
+  padding:20px;margin-bottom:14px;box-shadow:var(--card-shadow);
+  border:1.5px solid var(--border);
+}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.card-title{font-size:.95rem;font-weight:700;display:flex;align-items:center;gap:8px}
+.card-icon{font-size:1.1rem}
+.card-desc{font-size:.78rem;color:var(--text2);font-weight:500;margin-bottom:10px;line-height:1.5}
+
+/* PROGRESS BAR */
+.progress-wrap{
+  background:var(--surface3);border-radius:20px;height:10px;
+  margin:0 0 8px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.06);
+}
+.progress-fill{
+  height:100%;border-radius:20px;
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+.progress-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.progress-pct{font-size:.68rem;color:var(--text3);font-weight:600}
+
+/* STREAK */
+.streak-row{display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.streak-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 10px;border-radius:20px;font-size:.68rem;font-weight:700;
+  background:var(--warning-lt);color:var(--streak-gold);
+  border:1px solid var(--mod-bdr);
+}
+
+/* TASKS */
+.task-list{display:flex;flex-direction:column;gap:6px}
+.task{
+  display:flex;align-items:center;gap:12px;padding:12px 14px;
+  border-radius:var(--radius-sm);cursor:pointer;transition:all .2s;
+  background:var(--surface2);border:1.5px solid var(--border);
+  -webkit-user-select:none;user-select:none;
+}
+.task:active{transform:scale(.97)}
+.task.done{background:var(--safe-bg);border-color:var(--safe-bdr)}
+.task .task-icon{font-size:1.15rem;width:24px;text-align:center;flex-shrink:0}
+.task .task-text{flex:1;font-size:.82rem;font-weight:600}
+.task.done .task-text{text-decoration:line-through;color:var(--text3);opacity:.7}
+.task .check-circle{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--border);background:var(--surface);
+  transition:all .2s cubic-bezier(.4,0,.2,1);
+}
+.task.done .check-circle{background:var(--success);border-color:var(--success)}
+.check-svg{width:14px;height:14px;stroke:#fff;stroke-width:3;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;
+  stroke-dashoffset:24;transition:stroke-dashoffset .3s ease .05s}
+.task.done .check-svg{stroke-dashoffset:0}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.05)}100%{transform:scale(1)}}
+.task.pop{animation:pop .25s ease}
+
+/* INLINE FOOD SELECTOR */
+.meal-selector{
+  margin-top:4px;padding:0 12px;background:var(--surface);
+  border-radius:var(--radius-sm);border:1.5px dashed var(--border);
+  overflow:hidden;max-height:0;opacity:0;
+  transition:max-height .3s ease,opacity .2s ease,padding .3s ease;
+}
+.meal-selector.open{max-height:500px;opacity:1;padding:12px;overflow-y:auto}
+.meal-selector-label{
+  font-size:.68rem;color:var(--text3);font-weight:700;
+  margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;
+}
+
+/* CHIPS */
+.chip-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:4px}
+.chip{
+  display:inline-flex;align-items:center;gap:3px;
+  padding:6px 11px;border-radius:20px;font-size:.72rem;font-weight:600;
+  cursor:pointer;transition:all .15s;border:2px solid transparent;
+  -webkit-user-select:none;user-select:none;
+}
+.chip:active{transform:scale(.9)}
+.chip.safe{background:var(--safe-bg);color:var(--safe-clr);border-color:var(--safe-bdr)}
+.chip.moderate{background:var(--mod-bg);color:var(--mod-clr);border-color:var(--mod-bdr)}
+.chip.risky{background:var(--risky-bg);color:var(--risky-clr);border-color:var(--risky-bdr)}
+.chip.sel{border-color:var(--primary)!important;box-shadow:0 0 0 2px var(--primary-lt)}
+.chip.trig-warn::after{content:'⚠️';font-size:.6rem;margin-left:1px}
+
+/* SYMPTOM BUTTONS */
+.sym-section{margin-bottom:14px}
+.sym-label{font-size:.72rem;color:var(--text2);font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px}
+.sym-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.sym-btn{
+  padding:12px 6px;border-radius:var(--radius-sm);text-align:center;
+  cursor:pointer;transition:all .2s;border:2px solid var(--border);
+  background:var(--surface2);font-size:.78rem;font-weight:600;
+  box-shadow:var(--btn-shadow);-webkit-user-select:none;user-select:none;
+}
+.sym-btn:active{transform:scale(.94)}
+.sym-btn.active{border-color:var(--primary);background:var(--primary-lt);color:var(--primary-dk)}
+.sym-btn .sym-emoji{font-size:1.3rem;display:block;margin-bottom:3px}
+.yn-row{display:flex;gap:6px}
+.yn-btn{
+  flex:1;padding:10px;border-radius:var(--radius-sm);text-align:center;
+  cursor:pointer;transition:all .2s;border:2px solid var(--border);
+  background:var(--surface2);font-size:.78rem;font-weight:700;
+  box-shadow:var(--btn-shadow);-webkit-user-select:none;user-select:none;
+}
+.yn-btn:active{transform:scale(.94)}
+.yn-btn.ya{border-color:var(--danger);background:var(--danger-lt);color:var(--danger)}
+.yn-btn.na{border-color:var(--success);background:var(--safe-bg);color:var(--success)}
+
+/* SCORE */
+.score-ring{text-align:center;margin:4px 0 14px}
+.score-circle{
+  width:100px;height:100px;border-radius:50%;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  background:var(--surface);border:3px solid var(--border);
+  box-shadow:var(--card-shadow);
+}
+.score-big{font-size:2rem;font-weight:800;line-height:1}
+.score-of{font-size:.6rem;color:var(--text3);font-weight:600}
+
+/* CHART */
+.chart-wrap{display:flex;align-items:flex-end;gap:5px;height:110px;padding:4px 0}
+.chart-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;height:100%}
+.chart-bar{
+  width:100%;border-radius:5px 5px 2px 2px;margin-top:auto;
+  transition:height .5s ease;min-height:3px;
+}
+.chart-day{font-size:.55rem;font-weight:700;color:var(--text3)}
+.chart-val{font-size:.58rem;font-weight:700}
+
+/* TRIGGER */
+.trigger-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 12px;border-radius:var(--radius-sm);
+  background:var(--risky-bg);border:1px solid var(--risky-bdr);margin-bottom:5px;
+}
+.trigger-name{font-size:.78rem;font-weight:600;color:var(--risky-clr)}
+.trigger-badge{
+  font-size:.62rem;font-weight:700;background:var(--danger);
+  color:#fff;padding:2px 8px;border-radius:10px;
+}
+
+/* FOOD LIST */
+.food-row{
+  display:flex;align-items:center;gap:8px;padding:10px 12px;
+  border-radius:var(--radius-sm);background:var(--surface2);margin-bottom:5px;
+  border:1px solid var(--border);
+}
+.food-row .food-e{font-size:1rem}
+.food-row .food-n{flex:1;font-size:.78rem;font-weight:600}
+.food-row .food-b{
+  font-size:.58rem;font-weight:700;text-transform:uppercase;
+  padding:2px 8px;border-radius:8px;
+}
+.food-row .food-b.safe{background:var(--safe-bg);color:var(--safe-clr)}
+.food-row .food-b.moderate{background:var(--mod-bg);color:var(--mod-clr)}
+.food-row .food-b.risky{background:var(--risky-bg);color:var(--risky-clr)}
+.food-row .food-x{
+  width:26px;height:26px;border-radius:6px;display:flex;align-items:center;
+  justify-content:center;cursor:pointer;font-size:.8rem;color:var(--danger);
+  transition:background .12s;
+}
+.food-row .food-x:active{background:var(--danger-lt)}
+
+/* INPUTS */
+.search-wrap{position:relative;margin-bottom:10px}
+.search-input{
+  width:100%;padding:10px 12px 10px 34px;border-radius:var(--radius-sm);
+  background:var(--surface2);border:2px dashed var(--border);
+  color:var(--text);font-size:.78rem;font-weight:500;
+  transition:border .2s;min-height:42px;
+}
+.search-input:focus{border-color:var(--primary);border-style:solid}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:.82rem}
+.form-input{
+  width:100%;padding:10px 12px;border-radius:var(--radius-sm);
+  background:var(--surface2);border:2px dashed var(--border);
+  color:var(--text);font-size:.78rem;min-height:42px;transition:border .2s;
+}
+.form-input:focus{border-color:var(--primary);border-style:solid}
+.form-select{
+  width:100%;padding:10px 28px 10px 12px;border-radius:var(--radius-sm);
+  background:var(--surface2);border:2px dashed var(--border);
+  color:var(--text);font-size:.78rem;min-height:42px;
+  appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%239999ad' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;
+}
+.form-select:focus{border-color:var(--primary);border-style:solid}
+
+/* TABS */
+.tab-row{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
+.tab-btn{
+  flex:1;padding:7px 4px;border-radius:var(--radius-sm);text-align:center;
+  cursor:pointer;font-size:.65rem;font-weight:700;transition:all .2s;
+  border:2px solid transparent;-webkit-user-select:none;user-select:none;
+  min-width:60px;
+}
+.tab-btn.active{border-color:var(--primary);transform:scale(1.02)}
+.tab-btn:active{transform:scale(.95)}
+.tab-btn.t-safe{background:var(--safe-bg);color:var(--safe-clr)}
+.tab-btn.t-mod{background:var(--mod-bg);color:var(--mod-clr)}
+.tab-btn.t-risky{background:var(--risky-bg);color:var(--risky-clr)}
+.tab-btn.t-custom{background:var(--surface2);color:var(--text2)}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  padding:12px 20px;border-radius:var(--radius-sm);font-weight:700;
+  font-size:.82rem;cursor:pointer;transition:all .15s;
+  box-shadow:var(--btn-shadow);-webkit-user-select:none;user-select:none;
+  min-height:46px;
+}
+.btn:active{transform:scale(.94)!important;box-shadow:1px 1px 0 var(--border)}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-success{background:var(--success);color:#fff}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-outline{background:var(--surface);color:var(--text);border:2px solid var(--border)}
+.btn-block{width:100%}
+.btn-sm{padding:8px 14px;font-size:.72rem;min-height:36px;border-radius:var(--radius-xs)}
+
+/* ALERTS */
+.alert{
+  padding:12px 14px;border-radius:var(--radius-sm);font-size:.78rem;font-weight:600;
+  display:flex;align-items:flex-start;gap:8px;line-height:1.45;margin-bottom:10px;
+  border:1.5px solid;
+}
+.alert-info{background:var(--primary-lt);color:var(--primary-dk);border-color:var(--primary)}
+.alert-success{background:var(--success-lt);color:var(--success);border-color:var(--safe-bdr)}
+.alert-warning{background:var(--warning-lt);color:var(--warning);border-color:var(--mod-bdr)}
+.alert-danger{background:var(--danger-lt);color:var(--danger);border-color:var(--risky-bdr)}
+.alert-emoji{font-size:1rem;flex-shrink:0;line-height:1}
+
+/* EMPTY */
+.empty{text-align:center;padding:24px 16px;color:var(--text3)}
+.empty-emoji{font-size:2.2rem;margin-bottom:6px;opacity:.6}
+.empty-text{font-size:.78rem;font-weight:600}
+
+/* MODAL */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:200;
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;visibility:hidden;transition:all .25s;
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal{
+  background:var(--surface);border-radius:var(--radius) var(--radius) 0 0;
+  width:100%;max-width:500px;max-height:82vh;overflow-y:auto;
+  transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);
+  padding:20px;
+}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-handle{width:40px;height:4px;border-radius:4px;background:var(--border);margin:0 auto 14px}
+
+/* CONTEXT MENU */
+.ctx-wrap{position:fixed;inset:0;z-index:250;opacity:0;visibility:hidden;transition:all .12s}
+.ctx-wrap.open{opacity:1;visibility:visible}
+.ctx-menu{
+  position:fixed;background:var(--surface);border-radius:var(--radius-sm);
+  box-shadow:0 8px 30px rgba(0,0,0,.18);border:1.5px solid var(--border);
+  overflow:hidden;min-width:170px;
+  transform:scale(.88);transition:transform .15s;z-index:251;
+}
+.ctx-wrap.open .ctx-menu{transform:scale(1)}
+.ctx-item{
+  padding:12px 16px;font-size:.8rem;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;gap:8px;transition:background .1s;
+}
+.ctx-item:active{background:var(--surface2)}
+.ctx-item.danger{color:var(--danger)}
+
+/* TOAST */
+.toast-el{
+  position:fixed;bottom:86px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--text);color:var(--bg);padding:12px 24px;border-radius:var(--radius);
+  font-size:.8rem;font-weight:600;z-index:500;opacity:0;transition:all .3s;
+  box-shadow:0 6px 20px rgba(0,0,0,.18);max-width:92%;text-align:center;
+  pointer-events:none;
+}
+.toast-el.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* DARK TOGGLE */
+.dark-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;cursor:pointer;font-size:.82rem;font-weight:600}
+.dark-sw{
+  width:46px;height:24px;border-radius:12px;background:var(--border);
+  position:relative;transition:background .2s;cursor:pointer;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.1);
+}
+.dark-sw.on{background:var(--primary)}
+.dark-sw::after{
+  content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;
+  border-radius:50%;background:#fff;transition:left .2s;
+  box-shadow:0 1px 3px rgba(0,0,0,.15);
+}
+.dark-sw.on::after{left:25px}
+
+/* HISTORY */
+.hist-day{margin-bottom:12px}
+.hist-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+.hist-title{font-size:.78rem;font-weight:700}
+.hist-sc{font-size:.65rem;font-weight:700;padding:2px 10px;border-radius:10px;color:#fff}
+.hist-entry{padding:8px 12px;border-radius:var(--radius-xs);background:var(--surface2);margin-bottom:4px;font-size:.72rem}
+.hist-entry-type{font-weight:700;margin-bottom:1px}
+.hist-entry-detail{color:var(--text2);font-size:.68rem}
+
+/* BREAKDOWN */
+.bd-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:.78rem}
+.bd-row + .bd-row{border-top:1px dashed var(--border)}
+.bd-label{font-weight:600}
+.bd-pts{font-weight:700}
+
+/* SECTION DIVIDER */
+.divider{border:none;border-top:1.5px dashed var(--border);margin:16px 0}
+
+/* UTILITY */
+.text-center{text-align:center}.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}
+.mb-6{margin-bottom:6px}.mb-8{margin-bottom:8px}.mb-12{margin-bottom:12px}
+.flex-btw{display:flex;align-items:center;justify-content:space-between}
+.text-xs{font-size:.65rem}.text-sm{font-size:.78rem}
+.text-muted{color:var(--text3)}.fw6{font-weight:600}.fw7{font-weight:700}.fw8{font-weight:800}
+.hidden{display:none!important}
+
+/* SWIPE HINT */
+@keyframes shimmer{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
+.swipe-hint{animation:shimmer 2s ease infinite;font-size:.62rem;color:var(--text3);text-align:center;margin-top:6px}
+
+@media(min-width:640px){
+  .modal{border-radius:var(--radius);align-self:center;max-height:80vh}
+  .modal-overlay{align-items:center}
+  .app{padding:16px 20px 130px}
+}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-left">
+    <div class="logo"><span class="logo-icon">🫁</span><span class="logo-text">GutFix</span></div>
+    <div class="day-badge" id="dayBadge">Day 1 of 7</div>
+  </div>
+  <div class="header-right">
+    <div class="score-pill">
+      <span class="score-num" id="hdrScore">50</span>
+      <span class="score-max">/100</span>
+      <span class="trend-arrow" id="hdrTrend"></span>
+    </div>
+    <button class="hdr-btn" id="menuBtn" aria-label="Settings menu">⚙️</button>
+  </div>
+</header>
+
+<main class="app" id="app"></main>
+
+<div class="modal-overlay" id="modalOvl">
+  <div class="modal" id="modal"><div class="modal-handle"></div><div id="modalBody"></div></div>
+</div>
+
+<div class="ctx-wrap" id="ctxOvl"><div class="ctx-menu" id="ctxMenu"></div></div>
+<div class="toast-el" id="toastEl"></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ═══════ DATA ═══════ */
+const FOODS=[
+  {n:'Rice',c:'safe',e:'🍚'},{n:'Moong Dal',c:'safe',e:'🫘'},
+  {n:'Khichdi',c:'safe',e:'🍲'},{n:'Lauki',c:'safe',e:'🥬'},
+  {n:'Tori',c:'safe',e:'🥒'},{n:'Spinach',c:'safe',e:'🥗'},
+  {n:'Banana',c:'safe',e:'🍌'},{n:'Papaya',c:'safe',e:'🥭'},
+  {n:'Oats',c:'safe',e:'🥣'},{n:'Poha',c:'safe',e:'🍚'},
+  {n:'Suji',c:'safe',e:'🥣'},
+  {n:'Roti',c:'moderate',e:'🫓'},{n:'Masoor Dal',c:'moderate',e:'🫘'},
+  {n:'Curd',c:'moderate',e:'🥛'},{n:'Buttermilk',c:'moderate',e:'🥛'},
+  {n:'Idli',c:'moderate',e:'🍥'},{n:'Dosa',c:'moderate',e:'🥞'},
+  {n:'Carrot',c:'moderate',e:'🥕'},{n:'Beetroot',c:'moderate',e:'🟣'},
+  {n:'Paneer',c:'moderate',e:'🧀'},{n:'Daliya',c:'moderate',e:'🥣'},
+  {n:'Fried Food',c:'risky',e:'🍟'},{n:'Spicy Food',c:'risky',e:'🌶️'},
+  {n:'Green Chilli',c:'risky',e:'🌶️'},{n:'Junk Food',c:'risky',e:'🍔'},
+  {n:'Cold Drinks',c:'risky',e:'🥤'},{n:'Bakery',c:'risky',e:'🥐'},
+  {n:'Milk',c:'risky',e:'🥛'},{n:'Rajma',c:'risky',e:'🫘'},
+  {n:'Chole',c:'risky',e:'🍛'},{n:'Kala Chana',c:'risky',e:'🫘'}
+];
+
+const TASKS=[
+  {id:'water',text:'Drink warm water',icon:'💧'},
+  {id:'bfast',text:'Log breakfast',icon:'🌅',meal:true},
+  {id:'lunch',text:'Log lunch',icon:'☀️',meal:true},
+  {id:'dinner',text:'Log dinner',icon:'🌙',meal:true},
+  {id:'walk',text:'Walk after dinner',icon:'🚶'},
+  {id:'symptoms',text:'Log symptoms',icon:'📝'}
+];
+
+const PLANS={
+  1:{name:'Strict Reset',desc:'Simple, gentle foods only. Your gut is healing.'},
+  2:{name:'Building Foundation',desc:'Continue safe foods. Listen to your body.'},
+  3:{name:'Add Fiber',desc:'Introducing gentle variety. Monitor reactions.'},
+  4:{name:'Expanding Variety',desc:'More options. Watch for sensitivities.'},
+  5:{name:'Probiotics Phase',desc:'Adding fermented foods for gut bacteria.'},
+  6:{name:'Almost There',desc:'Balanced meals. You should feel improvement!'},
+  7:{name:'Final Day!',desc:'Assess your progress. Celebrate your journey!'},
+  m:{name:'Maintenance Mode 🎉',desc:'7-day reset complete! Maintain healthy habits.'}
+};
+
+const DAIRY=['Curd','Buttermilk','Milk','Paneer'];
+
+/* ═══════ STATE ═══════ */
+let S=loadState();
+function loadState(){
+  const d=localStorage.getItem('gutfix_v3');
+  if(d){try{return JSON.parse(d)}catch(e){}}
+  return{start:td(),foods:FOODS.map(f=>({...f})),custom:[],logs:{},tasks:{},triggers:{},dark:false,lastActive:td()};
+}
+function save(){S.lastActive=td();localStorage.setItem('gutfix_v3',JSON.stringify(S))}
+
+function td(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function tdKey(){return td()}
+
+function dayN(){
+  const s=new Date(S.start+'T00:00:00'),t=new Date(td()+'T00:00:00');
+  return Math.min(Math.max(Math.floor((t-s)/864e5)+1,1),999);
+}
+function isMaint(){return dayN()>7}
+function planKey(){return isMaint()?'m':Math.min(dayN(),7)}
+function dayAgo(n){const d=new Date(td()+'T00:00:00');d.setDate(d.getDate()-n);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function fmtD(s){return new Date(s+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'})}
+
+/* ═══════ HELPERS ═══════ */
+function allFoods(){return[...S.foods,...S.custom]}
+function foodN(n){return allFoods().find(f=>f.n.toLowerCase()===n.toLowerCase())}
+function isTrig(n){return(S.triggers[n.toLowerCase()]||0)>=2}
+
+function tLog(){
+  const k=tdKey();if(!S.logs[k])S.logs[k]={meals:[],symptoms:[]};return S.logs[k];
+}
+function gLog(k){if(!S.logs[k])S.logs[k]={meals:[],symptoms:[]};return S.logs[k]}
+
+function tTasks(){
+  const k=tdKey();if(!S.tasks[k]){S.tasks[k]={};TASKS.forEach(t=>{S.tasks[k][t.id]=false})}return S.tasks[k];
+}
+function taskOn(id){return tTasks()[id]===true}
+function taskTog(id){tTasks()[id]=!tTasks()[id];save()}
+function doneCnt(){const ts=tTasks();return TASKS.filter(t=>ts[t.id]).length}
+function taskPct(){return TASKS.length?Math.round((doneCnt()/TASKS.length)*100):0}
+
+/* STREAK */
+function calcStreak(){
+  let streak=0;
+  for(let i=0;i<30;i++){
+    const k=dayAgo(i),ts=S.tasks[k];
+    if(!ts)break;
+    const done=TASKS.filter(t=>ts[t.id]).length;
+    if(done>=TASKS.length)streak++;else break;
+  }
+  return streak;
+}
+
+/* ═══════ SCORE ═══════ */
+function calcSc(sym){
+  if(!sym||!sym.length)return null;
+  const s=sym[sym.length-1];let sc=50;
+  if(s.stool==='normal')sc+=20;else if(s.stool==='loose')sc-=10;else if(s.stool==='sticky')sc-=5;else if(s.stool==='hard')sc-=5;
+  if(s.urgency==='no')sc+=15;else if(s.urgency==='yes')sc-=15;
+  if(s.bloating==='no')sc+=15;else if(s.bloating==='yes')sc-=15;
+  return Math.max(0,Math.min(100,sc));
+}
+function tSc(){return calcSc(tLog().symptoms)}
+function ySc(){return calcSc(gLog(dayAgo(1)).symptoms)}
+function scTrend(){
+  const t=tSc(),y=ySc();
+  if(t===null||y===null)return null;
+  if(t>y)return{d:'up',v:t-y};if(t<y)return{d:'down',v:y-t};return{d:'flat',v:0};
+}
+function scClr(s){if(s===null)return'var(--text3)';if(s>=70)return'var(--safe-green)';if(s>=50)return'var(--warn-yellow)';return'var(--danger-red)'}
+
+/* ═══════ TRIGGERS ═══════ */
+function updTriggers(){
+  const dates=Object.keys(S.logs).sort();
+  for(let i=1;i<dates.length;i++){
+    const p=calcSc(S.logs[dates[i-1]].symptoms),c=calcSc(S.logs[dates[i]].symptoms);
+    if(p!==null&&c!==null&&c<p){
+      S.logs[dates[i-1]].meals.forEach(m=>{
+        m.foods.forEach(f=>{const fd=foodN(f);if(fd&&fd.c==='risky'){S.triggers[f.toLowerCase()]=(S.triggers[f.toLowerCase()]||0)+1}})
+      });
+    }
+  }
+  save();
+}
+function hasCheat(){return tLog().meals.some(m=>m.foods.some(f=>{const fd=foodN(f);return fd&&fd.c==='risky'}))}
+
+/* ═══════ DAIRY DETECTION ═══════ */
+function dairyIssue(){
+  const dates=Object.keys(S.logs).sort().slice(-7);
+  let dairyCount=0,symWorse=0;
+  for(let i=1;i<dates.length;i++){
+    const prev=S.logs[dates[i-1]],curr=S.logs[dates[i]];
+    const hasDairy=prev.meals.some(m=>m.foods.some(f=>DAIRY.includes(f)));
+    if(hasDairy){
+      dairyCount++;
+      const p=calcSc(prev.symptoms),c=calcSc(curr.symptoms);
+      if(p!==null&&c!==null&&c<p)symWorse++;
+    }
+  }
+  return dairyCount>=2&&symWorse>=Math.ceil(dairyCount*0.6);
+}
+
+/* ═══════ OVER-RESTRICTION ═══════ */
+function overRestricted(){
+  const log=tLog();
+  const total=log.meals.reduce((a,m)=>a+m.foods.length,0);
+  const day=dayN();
+  return day>=3&&log.meals.length>=2&&total<=2;
+}
+
+/* ═══════ INACTIVITY ═══════ */
+function wasInactive(){
+  if(!S.lastActive)return false;
+  const last=new Date(S.lastActive+'T00:00:00');
+  const now=new Date(td()+'T00:00:00');
+  return Math.floor((now-last)/864e5)>=2;
+}
+
+/* ═══════ REPEATED CHEATING ═══════ */
+function repeatedCheat(){
+  const dates=Object.keys(S.logs).sort().slice(-3);
+  return dates.filter(d=>S.logs[d].meals.some(m=>m.foods.some(f=>{const fd=foodN(f);return fd&&fd.c==='risky'}))).length>=2;
+}
+
+/* ═══════ NUDGE ═══════ */
+function getNudge(){
+  const d=dayN(),log=tLog(),done=doneCnt(),sc=tSc(),tr=scTrend(),cheat=hasCheat();
+  if(dairyIssue())return{t:'warning',e:'🥛',m:'Dairy products seem to worsen your symptoms. Try avoiding curd, buttermilk, milk, and paneer for a few days and see if things improve.'};
+  if(repeatedCheat())return{t:'danger',e:'🚨',m:'You\'ve eaten risky foods multiple days in a row. This is stalling your progress. Go back to Day 1 basics: rice, khichdi, banana.'};
+  if(overRestricted())return{t:'warning',e:'⚠️',m:'You\'re eating very little. Gut health needs fuel — try adding more safe foods. Too little nutrition can slow healing.'};
+  if(cheat)return{t:'danger',e:'🚫',m:'You chose risky food. Expect slower recovery. Consider simpler meals tomorrow.'};
+  if(sc!==null&&d>=5&&sc<40)return{t:'danger',e:'🏥',m:'Your gut score is still low after several days. Consider consulting a gastroenterologist for personalized advice.'};
+  if(log.meals.length===0&&d>1)return{t:'info',e:'🍽️',m:'No meals logged yet today. Don\'t skip meals — consistent eating helps your gut reset! Tap a meal task to log.'};
+  if(wasInactive())return{t:'info',e:'👋',m:'Welcome back! You were away for a couple of days. No worries — just pick up where you left off. Consistency matters more than perfection.'};
+  if(done===TASKS.length)return{t:'success',e:'🌟',m:'All tasks done! You\'re crushing it today. Keep this up! 💪'};
+  if(tr&&tr.d==='up')return{t:'success',e:'📈',m:`Score went up ${tr.v} points! You're improving. Try adding a new moderate food to test tolerance.`};
+  if(tr&&tr.d==='down')return{t:'warning',e:'📉',m:`Score dropped ${tr.v} points. Stick to safe foods today.`};
+  if(d<=2)return{t:'info',e:'🌱',m:'Reset Phase: Stick to safe, simple foods. Your gut needs time to heal.'};
+  if(d<=4)return{t:'info',e:'🌾',m:'Fiber Phase: Try gentle fiber like roti and masoor dal. Monitor how you feel.'};
+  if(d<=7)return{t:'success',e:'🦠',m:'Probiotic Phase: Add curd and buttermilk. Almost at the finish line!'};
+  return{t:'success',e:'🎉',m:'7-day reset complete! Maintain a balanced diet and watch your trigger foods.'};
+}
+
+/* ═══════ FOOD HELPERS ═══════ */
+function visibleFoods(cat,q){
+  let f;if(cat==='custom')f=S.custom;else f=allFoods().filter(x=>x.c===cat);
+  if(q){const lq=q.toLowerCase();f=f.filter(x=>x.n.toLowerCase().includes(lq))}
+  return f;
+}
+function allowedCats(){
+  const d=dayN();if(d<=2)return['safe'];if(d<=4)return['safe','moderate'];return['safe','moderate','risky'];
+}
+
+/* ═══════ DOM ═══════ */
+function $(s){return document.querySelector(s)}
+function $$(s){return document.querySelectorAll(s)}
+
+/* ═══════ TOAST ═══════ */
+let _tt;
+function toast(m){
+  const t=$('#toastEl');t.textContent=m;t.classList.add('show');
+  clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+/* ═══════ MODAL ═══════ */
+function openM(h){$('#modalBody').innerHTML=h;$('#modalOvl').classList.add('open')}
+function closeM(){$('#modalOvl').classList.remove('open')}
+
+/* ═══════ CTX ═══════ */
+let ctxCB={};
+function openCtx(x,y,items){
+  const m=$('#ctxMenu');let h='';
+  items.forEach(i=>{h+=`<div class="ctx-item${i.d?' danger':''}" data-a="${i.a}">${i.i?'<span>'+i.i+'</span>':''}${i.l}</div>`});
+  m.innerHTML=h;
+  const mw=180,mh=items.length*46+16;
+  m.style.left=Math.min(x,window.innerWidth-mw-8)+'px';
+  m.style.top=Math.min(y,window.innerHeight-mh-8)+'px';
+  $('#ctxOvl').classList.add('open');
+  m.querySelectorAll('.ctx-item').forEach(el=>{
+    el.onclick=()=>{$('#ctxOvl').classList.remove('open');const fn=ctxCB[el.dataset.a];if(fn)fn()};
+  });
+}
+function closeCtx(){$('#ctxOvl').classList.remove('open')}
+
+/* ═══════ RENDER ═══════ */
+function render(){renderHeader();renderApp()}
+
+function renderHeader(){
+  const d=dayN(),m=isMaint();
+  $('#dayBadge').textContent=m?'Maintenance':'Day '+d+' of 7';
+  const sc=tSc();
+  $('#hdrScore').textContent=sc!==null?sc:'—';
+  $('#hdrScore').style.color=sc!==null?scClr(sc):'var(--text3)';
+  const tr=scTrend();
+  const te=$('#hdrTrend');
+  te.textContent=tr?(tr.d==='up'?'↑':tr.d==='down'?'↓':'→'):'';
+  te.style.color=tr?(tr.d==='up'?'var(--safe-green)':tr.d==='down'?'var(--danger-red)':'var(--text3)'):'';
+}
+
+function renderApp(){
+  const app=$('#app');
+  const streak=calcStreak();
+  app.innerHTML=
+    renderNudge()+
+    renderTodayCard(streak)+
+    renderMealCard()+
+    renderSymCard()+
+    renderProgressCard();
+  bindApp();
+}
+
+function renderNudge(){
+  const n=getNudge();
+  const cls={info:'alert-info',success:'alert-success',warning:'alert-warning',danger:'alert-danger'};
+  return`<div class="alert ${cls[n.t]}"><span class="alert-emoji">${n.e}</span><span>${n.m}</span></div>`;
+}
+
+function renderTodayCard(streak){
+  const pct=taskPct();
+  const plan=PLANS[planKey()];
+  const pColor=pct>=100?'var(--safe-green)':pct>=50?'var(--primary)':'var(--warn-yellow)';
+  let tasks='';
+  TASKS.forEach(t=>{
+    const done=taskOn(t.id);
+    tasks+=`<div class="task${done?' done':''}" data-tid="${t.id}">
+      <span class="task-icon">${t.icon}</span>
+      <span class="task-text">${t.text}</span>
+      <div class="check-circle"><svg class="check-svg" viewBox="0 0 16 16"><polyline points="3.5 8.5 6.5 11.5 12.5 5"/></svg></div>
+    </div>`;
+    if(t.meal){
+      const log=tLog();
+      const mFoods=log.meals.filter(m=>m.tid===t.id).flatMap(m=>m.foods);
+      tasks+=`<div class="meal-selector${!done?' open':''}" id="ms-${t.id}">
+        <div class="meal-selector-label">What did you eat?</div>`;
+      const cats=allowedCats();
+      cats.forEach(cat=>{
+        const foods=visibleFoods(cat,'');
+        if(!foods.length)return;
+        tasks+=`<div class="chip-row">`;
+        foods.forEach(f=>{
+          const sel=mFoods.some(sf=>sf.toLowerCase()===f.n.toLowerCase());
+          const trig=isTrig(f.n);
+          tasks+=`<span class="chip ${f.c}${sel?' sel':''}${trig?' trig-warn':''}" data-food="${f.n}" data-tid="${t.id}">${f.e} ${f.n}</span>`;
+        });
+        tasks+=`</div>`;
+      });
+      if(mFoods.length)tasks+=`<div class="text-xs text-muted mt-8" style="text-align:center">${mFoods.length} item${mFoods.length>1?'s':''} selected</div>`;
+      tasks+=`</div>`;
+    }
+  });
+
+  const streakHtml=streak>0?`<div class="streak-row"><span class="streak-badge">🔥 ${streak}-day streak!</span></div>`:'';
+
+  return`<div class="card">
+    <div class="card-header">
+      <div class="card-title">📋 Today's Plan</div>
+      <span class="text-xs fw7" style="color:var(--primary)">${plan.name}</span>
+    </div>
+    <p class="card-desc">${plan.desc}</p>
+    ${streakHtml}
+    <div class="progress-meta">
+      <span class="progress-pct">${pct}% · ${doneCnt()}/${TASKS.length} done</span>
+    </div>
+    <div class="progress-wrap"><div class="progress-fill" style="width:${pct}%;background:${pColor}"></div></div>
+    <div class="task-list">${tasks}</div>
+  </div>`;
+}
+
+function renderMealCard(){
+  const log=tLog();
+  let chips='';
+  const cats=['safe','moderate','risky'];
+  cats.forEach(cat=>{
+    const foods=visibleFoods(cat,'');
+    if(!foods.length)return;
+    chips+=`<div class="chip-row">`;
+    foods.forEach(f=>{
+      const sel=mealSel.includes(f.n);
+      const trig=isTrig(f.n);
+      chips+=`<span class="chip ${f.c}${sel?' sel':''}${trig?' trig-warn':''}" data-food="${f.n}" data-standalone="1">${f.e} ${f.n}</span>`;
+    });
+    chips+=`</div>`;
+  });
+
+  let meals='';
+  if(!log.meals.length){
+    meals='<div class="empty"><div class="empty-emoji">🍽️</div><div class="empty-text">No meals logged yet</div></div>';
+  }else{
+    log.meals.forEach((m,i)=>{
+      const iconMap={Breakfast:'🌅',Lunch:'☀️',Dinner:'🌙'};
+      const icon=iconMap[m.type]||'🍪';
+      const foodsStr=m.foods.map(f=>{
+        const fd=foodN(f);const trig=isTrig(f);
+        return(fd?fd.e:'🍽️')+' '+f+(trig?' ⚠️':'');
+      }).join(', ');
+      meals+=`<div class="hist-entry meal-entry" data-idx="${i}">
+        <div class="hist-entry-type">${icon} ${m.type}</div>
+        <div class="hist-entry-detail">${foodsStr||'No foods'}</div>
+      </div>`;
+    });
+  }
+
+  const hasRisky=mealSel.some(f=>{const fd=foodN(f);return fd&&fd.c==='risky'});
+  const hasTrig=mealSel.some(f=>isTrig(f));
+  let warn='';
+  if(hasRisky)warn+=`<div class="alert alert-danger mt-8"><span class="alert-emoji">🚫</span><span>Risky food! This will slow recovery.</span></div>`;
+  if(hasTrig)warn+=`<div class="alert alert-warning mt-8"><span class="alert-emoji">⚠️</span><span>Trigger food! It caused issues before.</span></div>`;
+
+  return`<div class="card">
+    <div class="card-header">
+      <div class="card-title">🍽️ Meal Logger</div>
+    </div>
+    <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" class="search-input" id="mealQ" placeholder="Search foods..."></div>
+    <div id="mealChips">${chips}</div>
+    ${warn}
+    <button class="btn btn-primary btn-block mt-8" id="logMealBtn">📝 Log Selected Foods</button>
+    <hr class="divider">
+    <div class="card-title mb-8">📋 Today's Meals</div>
+    <div id="todayMeals">${meals}</div>
+    ${log.meals.length?'<div class="swipe-hint">Long press a meal to delete it</div>':''}
+  </div>`;
+}
+
+function renderSymCard(){
+  const log=tLog();
+  const last=log.symptoms.length?log.symptoms[log.symptoms.length-1]:null;
+  const st=last?last.stool:null,ug=last?last.urgency:null,bl=last?last.bloating:null;
+
+  const stoolBtns=['hard','normal','loose','sticky'].map(s=>{
+    const em={hard:'🪨',normal:'✅',loose:'💧',sticky:'🫠'};
+    return`<div class="sym-btn${st===s?' active':''}" data-sym="stool" data-val="${s}"><span class="sym-emoji">${em[s]}</span>${s[0].toUpperCase()+s.slice(1)}</div>`;
+  }).join('');
+
+  const mkYN=(field,val,cur)=>{
+    const active=cur===val;
+    const cls=active?(val==='yes'?' ya':' na'):'';
+    const label=val==='yes'?'Yes':'No';
+    return`<div class="yn-btn${cls}" data-sym="${field}" data-val="${val}">${label}</div>`;
+  };
+
+  let breakdown='';
+  if(last){
+    breakdown=`<div class="bd-row"><span class="bd-label">Stool: ${st}</span><span class="bd-pts">${st==='normal'?'+20':st==='loose'?'-10':'-5'}</span></div>`;
+    breakdown+=`<div class="bd-row"><span class="bd-label">Urgency: ${ug}</span><span class="bd-pts">${ug==='no'?'+15':'-15'}</span></div>`;
+    breakdown+=`<div class="bd-row"><span class="bd-label">Bloating: ${bl}</span><span class="bd-pts">${bl==='no'?'+15':'-15'}</span></div>`;
+    const sc=calcSc(log.symptoms);
+    breakdown+=`<div class="flex-btw mt-12" style="padding-top:8px;border-top:2px solid var(--border)"><span class="fw7">Score</span><span class="fw8" style="font-size:1.2rem;color:${scClr(sc)}">${sc}</span></div>`;
+  }else{
+    breakdown='<p class="text-sm text-muted text-center">Log symptoms below to calculate your score</p>';
+  }
+
+  return`<div class="card">
+    <div class="card-header"><div class="card-title">📝 How Are You Feeling?</div></div>
+    <div class="sym-section">
+      <div class="sym-label">Stool Consistency</div>
+      <div class="sym-grid">${stoolBtns}</div>
+    </div>
+    <div class="sym-section">
+      <div class="sym-label">Urgency</div>
+      <div class="yn-row">${mkYN('urgency','yes',ug)}${mkYN('urgency','no',ug)}</div>
+    </div>
+    <div class="sym-section">
+      <div class="sym-label">Bloating</div>
+      <div class="yn-row">${mkYN('bloating','yes',bl)}${mkYN('bloating','no',bl)}</div>
+    </div>
+    <hr class="divider">
+    <div class="card-title mb-8">📊 Score Breakdown</div>
+    ${breakdown}
+  </div>`;
+}
+
+function renderProgressCard(){
+  const d=dayN();
+  let chart='';
+  for(let i=6;i>=0;i--){
+    const dk=dayAgo(i),lg=gLog(dk),sc=calcSc(lg.symptoms);
+    const h=sc!==null?Math.max(4,sc*1.05):3;
+    const c=sc!==null?scClr(sc):'var(--border)';
+    chart+=`<div class="chart-col"><div class="chart-val" style="color:${c}">${sc!==null?sc:'-'}</div><div class="chart-bar" style="height:${h}px;background:${c}"></div><div class="chart-day">${fmtD(dk)}</div></div>`;
+  }
+
+  const pct=Math.min(100,Math.round((Math.min(d,7)/7)*100));
+  const sc=tSc();
+  let prog=`<div class="flex-btw mb-6"><span class="text-sm fw6">Days Completed</span><span class="fw7">${Math.min(d,7)} / 7</span></div>`;
+  prog+=`<div class="progress-wrap mb-8"><div class="progress-fill" style="width:${pct}%;background:var(--primary)"></div></div>`;
+  if(sc!==null)prog+=`<div class="flex-btw"><span class="text-sm fw6">Today's Score</span><span class="fw8" style="color:${scClr(sc)}">${sc}/100</span></div>`;
+  if(isMaint())prog+=`<div class="alert alert-success mt-8"><span class="alert-emoji">🎉</span><span>7-day reset complete! Keep maintaining healthy habits.</span></div>`;
+
+  const triggers=Object.entries(S.triggers).filter(([,v])=>v>=2).sort((a,b)=>b[1]-a[1]);
+  let trig='';
+  if(triggers.length){
+    triggers.forEach(([name,count])=>{
+      const fd=foodN(name);
+      trig+=`<div class="trigger-row"><span class="trigger-name">${fd?fd.e:'🍽️'} ${name}</span><span class="trigger-badge">${count}×</span></div>`;
+    });
+  }else{
+    trig='<div class="empty"><div class="empty-emoji">✅</div><div class="empty-text">No trigger foods detected yet</div></div>';
+  }
+
+  const dates=Object.keys(S.logs).sort().reverse().slice(0,7);
+  let hist='';
+  if(!dates.length)hist='<div class="empty"><div class="empty-emoji">📋</div><div class="empty-text">No history yet — start logging!</div></div>';
+  dates.forEach(dk=>{
+    const lg=S.logs[dk],sc=calcSc(lg.symptoms);
+    hist+=`<div class="hist-day"><div class="hist-hdr"><span class="hist-title">${fmtD(dk)}</span>${sc!==null?`<span class="hist-sc" style="background:${scClr(sc)}">${sc}</span>`:''}</div>`;
+    if(lg.meals.length){
+      const ms=lg.meals.map(m=>m.foods.join(', ')).join(' · ');
+      hist+=`<div class="hist-entry"><div class="hist-entry-type">🍽️ Meals</div><div class="hist-entry-detail">${ms}</div></div>`;
+    }
+    if(lg.symptoms.length){
+      const ss=lg.symptoms.map(s=>`Stool: ${s.stool}${s.urgency?' · Urgency: '+s.urgency:''}${s.bloating?' · Bloating: '+s.bloating:''}`).join('; ');
+      hist+=`<div class="hist-entry"><div class="hist-entry-type">📝 Symptoms</div><div class="hist-entry-detail">${ss}</div></div>`;
+    }
+    hist+=`</div>`;
+  });
+
+  return`<div class="card">
+    <div class="card-header"><div class="card-title">📊 Progress</div></div>
+    <div class="card-title mb-8">📈 Gut Score Trend</div>
+    <div class="chart-wrap">${chart}</div>
+    <hr class="divider">
+    <div class="card-title mb-8">🎯 Overall</div>
+    ${prog}
+    <hr class="divider">
+    <div class="card-title mb-8">⚠️ Trigger Foods</div>
+    ${trig}
+    <hr class="divider">
+    <div class="card-title mb-8">📅 History</div>
+    ${hist}
+  </div>`;
+}
+
+/* ═══════ MEAL SELECTION ═══════ */
+let mealSel=[];
+
+/* ═══════ EVENTS ═══════ */
+function bindApp(){
+  // Tasks
+  $$('.task[data-tid]').forEach(el=>{
+    el.onclick=()=>{
+      const id=el.dataset.tid;
+      const def=TASKS.find(t=>t.id===id);
+      if(id==='symptoms'){
+        const cards=$$('.card');if(cards[2])cards[2].scrollIntoView({behavior:'smooth',block:'start'});
+        taskTog('symptoms');renderApp();return;
+      }
+      if(def&&def.meal){
+        const log=tLog();
+        const has=log.meals.some(m=>m.tid===id);
+        if(!has&&!taskOn(id)){
+          const msel=$('#ms-'+id);
+          if(msel){msel.classList.add('open');toast('Select foods first!')}
+          return;
+        }
+      }
+      taskTog(id);
+      el.classList.add('pop');
+      setTimeout(()=>el.classList.remove('pop'),250);
+      renderApp();
+      if(taskOn(id)&&doneCnt()===TASKS.length)setTimeout(()=>toast('🎉 All tasks done today!'),350);
+    };
+  });
+
+  // Inline food chips (task meals)
+  $$('.chip[data-tid]').forEach(el=>{
+    el.onclick=()=>{
+      const food=el.dataset.food,tid=el.dataset.tid;
+      const log=tLog();
+      let meal=log.meals.find(m=>m.tid===tid);
+      if(!meal){
+        const typeMap={bfast:'Breakfast',lunch:'Lunch',dinner:'Dinner'};
+        meal={type:typeMap[tid]||'Snack',tid,foods:[],time:new Date().toISOString()};
+        log.meals.push(meal);
+      }
+      const idx=meal.foods.findIndex(f=>f.toLowerCase()===food.toLowerCase());
+      if(idx>=0)meal.foods.splice(idx,1);else meal.foods.push(food);
+      if(!meal.foods.length){const mi=log.meals.indexOf(meal);if(mi>=0)log.meals.splice(mi,1)}
+      save();updTriggers();renderApp();
+      toast(idx>=0?`${food} removed`:`${food} added`);
+    };
+  });
+
+  // Standalone chips
+  $$('.chip[data-standalone]').forEach(el=>{
+    el.onclick=()=>{
+      const food=el.dataset.food;
+      const idx=mealSel.findIndex(f=>f.toLowerCase()===food.toLowerCase());
+      if(idx>=0){mealSel.splice(idx,1);el.classList.remove('sel')}
+      else{mealSel.push(food);el.classList.add('sel');
+        if(isTrig(food))toast('⚠️ This triggered issues before');
+      }
+      // Update warning inline
+      updateMealWarn();
+    };
+  });
+
+  // Meal search
+  const mq=$('#mealQ');
+  if(mq){
+    mq.oninput=()=>{
+      const q=mq.value.trim();
+      const cats=['safe','moderate','risky'];
+      let h='';
+      cats.forEach(cat=>{
+        const foods=visibleFoods(cat,q);
+        if(!foods.length)return;
+        h+=`<div class="chip-row">`;
+        foods.forEach(f=>{
+          const sel=mealSel.some(sf=>sf.toLowerCase()===f.n.toLowerCase());
+          const trig=isTrig(f.n);
+          h+=`<span class="chip ${f.c}${sel?' sel':''}${trig?' trig-warn':''}" data-food="${f.n}" data-standalone="1">${f.e} ${f.n}</span>`;
+        });
+        h+=`</div>`;
+      });
+      if(!h)h='<p class="text-sm text-muted text-center">No foods found</p>';
+      $('#mealChips').innerHTML=h;
+      // Rebind
+      $$('.chip[data-standalone]').forEach(el=>{
+        el.onclick=()=>{
+          const food=el.dataset.food;
+          const idx=mealSel.findIndex(f=>f.toLowerCase()===food.toLowerCase());
+          if(idx>=0){mealSel.splice(idx,1);el.classList.remove('sel')}
+          else{mealSel.push(food);el.classList.add('sel')}
+          updateMealWarn();
+        };
+      });
+    };
+  }
+
+  // Log meal btn
+  const logBtn=$('#logMealBtn');
+  if(logBtn){
+    logBtn.onclick=()=>{
+      if(!mealSel.length){toast('Select at least one food!');return}
+      const log=tLog();
+      log.meals.push({type:'Snack',tid:'snack',foods:[...mealSel],time:new Date().toISOString()});
+      mealSel=[];save();updTriggers();renderApp();toast('Meal logged! 🍽️');
+    };
+  }
+
+  // Symptom buttons
+  $$('.sym-btn[data-sym]').forEach(el=>{
+    el.onclick=()=>{
+      const sym=el.dataset.sym,val=el.dataset.val;
+      const log=tLog();
+      let s=log.symptoms.length?log.symptoms[log.symptoms.length-1]:null;
+      if(!s||s._saved){s={stool:null,urgency:null,bloating:null,_saved:false};log.symptoms.push(s)}
+      s[sym]=val;s._saved=false;save();updTriggers();renderApp();
+    };
+  });
+  $$('.yn-btn[data-sym]').forEach(el=>{
+    el.onclick=()=>{
+      const sym=el.dataset.sym,val=el.dataset.val;
+      const log=tLog();
+      let s=log.symptoms.length?log.symptoms[log.symptoms.length-1]:null;
+      if(!s||s._saved){s={stool:null,urgency:null,bloating:null,_saved:false};log.symptoms.push(s)}
+      s[sym]=s[sym]===val?null:val;s._saved=false;save();updTriggers();renderApp();
+    };
+  });
+
+  // Long press on meal entries to delete
+  $$('.meal-entry').forEach(el=>{
+    let timer;
+    const idx=parseInt(el.dataset.idx);
+    const start=e=>{
+      timer=setTimeout(()=>{
+        ctxCB={del:()=>{
+          const log=tLog();
+          if(log.meals[idx]){log.meals.splice(idx,1);save();renderApp();toast('Meal removed')}
+        }};
+        const r=el.getBoundingClientRect();
+        openCtx(r.left+r.width/2,r.top-40,[{l:'Delete Meal',i:'🗑️',a:'del',d:true}]);
+      },500);
+    };
+    const cancel=()=>clearTimeout(timer);
+    el.addEventListener('touchstart',start,{passive:true});
+    el.addEventListener('touchend',cancel);
+    el.addEventListener('touchmove',cancel);
+    el.addEventListener('mousedown',start);
+    el.addEventListener('mouseup',cancel);
+    el.addEventListener('mouseleave',cancel);
+  });
+}
+
+function updateMealWarn(){
+  // Re-render the warning area only
+  const warnEl=document.querySelector('#mealChips')?.parentElement?.querySelector('.alert');
+  // For simplicity, just re-render full app is fast enough
+  // We'll do a lightweight update instead
+  const hasRisky=mealSel.some(f=>{const fd=foodN(f);return fd&&fd.c==='risky'});
+  const hasTrig=mealSel.some(f=>isTrig(f));
+  const btn=$('#logMealBtn');
+  if(btn){
+    if(hasRisky||hasTrig){
+      btn.classList.remove('btn-primary');
+      btn.classList.add('btn-danger');
+    }else{
+      btn.classList.remove('btn-danger');
+      btn.classList.add('btn-primary');
+    }
+  }
+}
+
+/* ═══════ SETTINGS ═══════ */
+function openSettings(){
+  openM(`
+    <div class="text-center mb-12">
+      <div style="font-size:2.2rem;margin-bottom:6px">⚙️</div>
+      <div style="font-size:1rem;font-weight:700">Settings</div>
+    </div>
+    <div class="dark-row" id="darkTgl"><span>🌙 Dark Mode</span><div class="dark-sw${S.dark?' on':''}"></div></div>
+    <hr class="divider">
+    <button class="btn btn-outline btn-block mb-8" id="addFoodBtn">➕ Add Custom Food</button>
+    <button class="btn btn-outline btn-block mb-8" id="browseFoodBtn">🥗 Browse All Foods</button>
+    <button class="btn btn-danger btn-block" id="resetBtn">🔄 Reset 7-Day Plan</button>
+    <hr class="divider">
+    <div class="text-center text-xs text-muted">GutFix · Data stored locally on your device<br>This app is for informational purposes only.<br>Consult a doctor for medical advice.</div>
+  `);
+  setTimeout(()=>{
+    $('#darkTgl').onclick=()=>{
+      S.dark=!S.dark;save();
+      document.body.classList.toggle('dark',S.dark);
+      document.querySelector('meta[name="theme-color"]').content=S.dark?'#1a1830':'#f5f0eb';
+      document.querySelector('.dark-sw').classList.toggle('on',S.dark);
+    };
+    $('#addFoodBtn').onclick=()=>{closeM();setTimeout(openAddFood,280)};
+    $('#browseFoodBtn').onclick=()=>{closeM();setTimeout(openBrowser,280)};
+    $('#resetBtn').onclick=()=>{
+      closeM();
+      setTimeout(()=>{
+        openM(`<div class="text-center">
+          <div style="font-size:2.2rem;margin-bottom:6px">🔄</div>
+          <div style="font-size:1rem;font-weight:700;margin-bottom:8px">Reset Plan?</div>
+          <p class="text-sm text-muted mb-12">This resets your day counter to Day 1. All logs are kept.</p>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-outline" id="cReset" style="flex:1">Cancel</button>
+            <button class="btn btn-danger" id="yReset" style="flex:1">Reset</button>
+          </div>
+        </div>`);
+        setTimeout(()=>{
+          $('#cReset').onclick=closeM;
+          $('#yReset').onclick=()=>{S.start=td();save();closeM();render();toast('Plan reset! Starting fresh 🌱')};
+        },10);
+      },280);
+    };
+  },10);
+}
+
+function openAddFood(){
+  openM(`<div style="font-size:1rem;font-weight:700;margin-bottom:14px;text-align:center">➕ Add Custom Food</div>
+    <input type="text" class="form-input mb-8" id="nfName" placeholder="Food name">
+    <select class="form-select mb-8" id="nfCat">
+      <option value="safe">🟢 Safe</option>
+      <option value="moderate">🟡 Moderate</option>
+      <option value="risky">🔴 Risky</option>
+    </select>
+    <button class="btn btn-primary btn-block" id="nfSave">Add Food</button>
+  `);
+  setTimeout(()=>{
+    const ni=$('#nfName');ni.focus();
+    const saveFood=()=>{
+      const name=ni.value.trim();
+      if(!name){toast('Enter a name');return}
+      if(foodN(name)){toast('Already exists!');return}
+      const cat=$('#nfCat').value;
+      const em={safe:'✅',moderate:'🟡',risky:'🔴'}[cat];
+      S.custom.push({n:name,c:cat,e:em});save();closeM();toast(`${name} added!`);
+    };
+    $('#nfSave').onclick=saveFood;
+    ni.onkeydown=e=>{if(e.key==='Enter')saveFood()};
+  },10);
+}
+
+function openBrowser(){
+  let tab='safe';
+  const draw=()=>{
+    const cats=['safe','moderate','risky','custom'];
+    const labels={safe:'Safe',moderate:'Moderate',risky:'Risky',custom:'Custom'};
+    let tabs='<div class="tab-row">';
+    cats.forEach(c=>{
+      const icons={safe:'🟢',moderate:'🟡',risky:'🔴',custom:'⭐'};
+      tabs+=`<div class="tab-btn t-${c}${tab===c?' active':''}" data-tab="${c}">${icons[c]} ${labels[c]}</div>`;
+    });
+    tabs+='</div>';
+    const foods=visibleFoods(tab,'');
+    let list='';
+    if(!foods.length)list='<div class="empty"><div class="empty-emoji">🔍</div><div class="empty-text">No foods in this category</div></div>';
+    foods.forEach(f=>{
+      const trig=isTrig(f.n);
+      const isCustom=S.custom.some(cf=>cf.n===f.n);
+      list+=`<div class="food-row">
+        <span class="food-e">${f.e}</span>
+        <span class="food-n">${f.n}${trig?' ⚠️':''}</span>
+        <span class="food-b ${f.c}">${f.c}</span>
+        ${isCustom?`<span class="food-x" data-food="${f.n}">🗑️</span>`:''}
+      </div>`;
+    });
+    return tabs+list;
+  };
+  openM(`<div style="font-size:1rem;font-weight:700;margin-bottom:12px;text-align:center">🥗 Food Database</div><div id="fBody">${draw()}</div>`);
+  setTimeout(()=>{
+    const refresh=()=>{
+      $('#fBody').innerHTML=draw();
+      $$('#fBody .tab-btn').forEach(t=>{t.onclick=()=>{tab=t.dataset.tab;refresh()}});
+      $$('#fBody .food-x').forEach(b=>{
+        b.onclick=()=>{
+          const name=b.dataset.food;
+          S.custom=S.custom.filter(f=>f.n!==name);
+          S.foods=S.foods.filter(f=>f.n!==name);
+          save();refresh();toast(`${name} deleted`);
+        };
+      });
+    };
+    // Initial bind
+    $$('#fBody .tab-btn').forEach(t=>{t.onclick=()=>{tab=t.dataset.tab;refresh()}});
+    $$('#fBody .food-x').forEach(b=>{
+      b.onclick=()=>{
+        const name=b.dataset.food;
+        S.custom=S.custom.filter(f=>f.n!==name);
+        S.foods=S.foods.filter(f=>f.n!==name);
+        save();refresh();toast(`${name} deleted`);
+      };
+    });
+  },10);
+}
+
+/* ═══════ INIT ═══════ */
+function init(){
+  if(!S.custom)S.custom=[];
+  if(!S.triggers)S.triggers={};
+  if(!S.tasks)S.tasks={};
+  if(!S.lastActive)S.lastActive=td();
+
+  document.body.classList.toggle('dark',S.dark);
+  const meta=document.querySelector('meta[name="theme-color"]');
+  if(meta)meta.content=S.dark?'#1a1830':'#f5f0eb';
+
+  $('#menuBtn').onclick=openSettings;
+  $('#modalOvl').onclick=e=>{if(e.target===$('#modalOvl'))closeM()};
+  $('#ctxOvl').onclick=closeCtx;
+
+  render();
+  setInterval(()=>{
+    const b=$('#dayBadge');if(b){const d=dayN();b.textContent=isMaint()?'Maintenance':'Day '+d+' of 7'}
+  },30000);
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+
+})();
+</script>
+</body>
+</html>
